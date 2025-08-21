@@ -17,7 +17,7 @@ jobs:
       - name: 🔑 Log in to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: NapatKulnarong
+          username: pattrickts
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
       - name: 🐳 Build and tag Docker images
@@ -26,10 +26,10 @@ jobs:
 
       - name: 🏷️ Tag & Push Backend image
         run: |
-          docker tag todo101-todo-backend NapatKulnarong/todo-backend:latest
-          docker push NapatKulnarong/todo-backend:latest
+          docker tag todo101-todo-backend pattrickts/todo-backend:latest
+          docker push pattrickts/todo-backend:latest
           
       - name: 🏷️ Tag & Push Frontend image
         run: |
-          docker tag todo101-todo-frontend NapatKulnarong/todo-frontend:latest
-          docker push NapatKulnarong/todo-frontend:latest
+          docker tag todo101-todo-frontend pattrickts/todo-frontend:latest
+          docker push pattrickts/todo-frontend:latest
