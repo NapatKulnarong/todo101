@@ -6,7 +6,7 @@ function App() {
 
   const loadTasks = async () => {
     const res = await fetch("http://localhost:15000/tasks");
-      setTasks(await res.json());
+    setTasks(await res.json());
   };
 
   useEffect(() => {
@@ -24,26 +24,26 @@ function App() {
   };
 
   const toggleTask = async (task) => {
-    await fetch('http://localhost:15000/tasks/${task._id}', {
-      methodd: "PUT",
+    await fetch(`http://localhost:15000/tasks/${task._id}`, {
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...task, completed: !task.completed})
+      body: JSON.stringify({ ...task, completed: !task.completed })
     });
     loadTasks();
   };
 
-  const deleteTask = async  (id) => {
-    await fetch('http://local:15000/tasks/${id}', { method: "DELETE" });
+  const deleteTask = async (id) => {
+    await fetch(`http://localhost:15000/tasks/${id}`, { method: "DELETE" });
     loadTasks();
   };
 
   return (
     <div style={{ padding: 20 }}>
-      <h1>📝 To-Do App</h1>
+      <h1>To-Do App</h1>
       <input value={text} onChange={(e) => setText(e.target.value)} />
       <button onClick={addTask}>Add</button>
       <ul>
-        {tasks.map(task => (
+        {tasks.map((task) => (
           <li key={task._id}>
             <input type="checkbox" checked={task.completed} onChange={() => toggleTask(task)} />
             {task.text}
